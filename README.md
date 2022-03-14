@@ -23,4 +23,4 @@ chmod +x ./subdomain_scanner
 
 ![](https://i.hizliresim.com/rxyooei.png)
 
-![](https://i.hizliresim.com/mktsgew.png)
+![](https://i.hizliresim.com/793hzy4.png)
