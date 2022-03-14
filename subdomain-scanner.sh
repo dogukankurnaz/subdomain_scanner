@@ -172,20 +172,21 @@ elif [[ $input == "2"  ]]; then
         # mkdir_domain
         # files=${domain} '/' ${domain}'_result.txt'
         # progress_bar 1
-        curl -s 'https://crt.sh/?q=%.'$domain'&output=json' | jq '.[] | {name_value}' | sed 's/\"//g' | sed 's/\*\.//g' | sort -u |grep "name_value"|cut -d ' ' -f4 >> subdomain_database.txt 
+        curl -s 'https://crt.sh/?q=%.'$domain'&output=json' | jq '.[] | {name_value}' | sed 's/\"//g' | sed 's/\*\.//g' |grep "name_value"|cut -d ' ' -f4 > subdomain_database.txt 
         echo "[*]-----------------------Crt.sh OK"
         progress_bar 1
-        curl -s "https://dns.bufferover.run/dns?q=."$domain | jq -r .FDNS_A[]|cut -d',' -f2|sort -u >> subdomain_database.txt
+        curl -s "https://dns.bufferover.run/dns?q=."$domain | jq -r .FDNS_A[]|cut -d',' -f2 >> subdomain_database.txt
         echo "[*]----------------------- DNS BufferOver OK"
         progress_bar 1
         curl -s "https://otx.alienvault.com/api/v1/indicators/domain/$domain/passive_dns" | grep -o -E "[a-zA-Z0-9._-]+\.$domain" >> subdomain_database.txt
         echo "[*]----------------------- AlienVault OK"
         progress_bar 1
         curl -s "https://urlscan.io/api/v1/search/?q=$domain" | grep -o -E "[a-zA-Z0-9._-]+\.$domain"  >> subdomain_database.txt       
-        echo "[*]----------------------- URLSCAN OK"
-        cat subdomain_database.txt | sort | uniq -c | sort -nr | sed -e 's/^[ \t]*//' > subdomain_database.txt
-        progress_bar 1
-        echo -e "${YELLOW} $(pwd)/${domain}/subdomain_database.txt in directory."        
+        echo "[*]----------------------- URLSCAN OK"        
+        progress_bar 1        
+        echo -e "${YELLOW} $(pwd)/${domain}.txt in directory."
+        cat subdomain_database.txt | sort | uniq -c | sort -nr | sed -e 's/^[ \t]*//' >> ${domain}.txt
+        rm subdomain_database.txt        
         fi        
     
         if [[ $input == "3" ]]; then
