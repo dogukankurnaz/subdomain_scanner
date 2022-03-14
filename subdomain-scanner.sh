@@ -147,7 +147,7 @@ elif [[ $input == "2"  ]]; then
     rm fullscan_subdomainlist.txt;rm fullscan_httpstatus.txt;rm fullscan_results.txt;rm fullscan_subdomainresults.txt
     touch fullscan_subdomainlist.txt;touch fullscan_httpstatus.txt;touch fullscan_curl.txt;touch fullscan_results.txt;touch fullscan_subdomainresults.txt
     echo -e "${WHITE}+ --------=[*] 1.UDP mode"
-    echo -e "${WHITE}+ --------=[*] 2.Subdomains Over Databases (recommended mode)"
+    echo -e "${WHITE}+ --------=[*] 2.Subdomains Over Databases (recommended mode) "
     echo -e "${WHITE}+ --------=[*] 3.FullScan mode (TCP it may take a long time)"
     
     read -p "Your Choice = " -i Y input
@@ -184,7 +184,8 @@ elif [[ $input == "2"  ]]; then
         curl -s "https://urlscan.io/api/v1/search/?q=$domain" | grep -o -E "[a-zA-Z0-9._-]+\.$domain"  >> subdomain_database.txt       
         echo "[*]----------------------- URLSCAN OK"
         cat subdomain_database.txt | sort | uniq -c | sort -nr | sed -e 's/^[ \t]*//' > subdomain_database.txt
-        progress_bar 1        
+        progress_bar 1
+        echo -e "${YELLOW} $(pwd)/${domain}/subdomain_database.txt in directory."        
         fi        
     
         if [[ $input == "3" ]]; then
