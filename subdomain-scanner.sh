@@ -146,7 +146,7 @@ if [[ $input == "1" ]]; then
 elif [[ $input == "2"  ]]; then
     rm fullscan_subdomainlist.txt;rm fullscan_httpstatus.txt;rm fullscan_results.txt;rm fullscan_subdomainresults.txt
     touch fullscan_subdomainlist.txt;touch fullscan_httpstatus.txt;touch fullscan_curl.txt;touch fullscan_results.txt;touch fullscan_subdomainresults.txt
-    echo -e "${WHITE}+ --------=[*] 1.UDP mode"
+    echo -e "${WHITE}+ --------=[*] 1.Fast mode"
     echo -e "${WHITE}+ --------=[*] 2.Subdomains Over Databases (recommended mode) "
     echo -e "${WHITE}+ --------=[*] 3.FullScan mode (TCP it may take a long time)"
     
