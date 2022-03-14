@@ -7,8 +7,12 @@
 
 
 ```shell
-chmod +x ./subdomain_scanner
 
+git clone https://github.com/dogukankurnaz/subdomain_scanner.git
+
+cd subdomain_scanner
+
+chmod +x ./subdomain_scanner
 
 ./subdomain_scanner
 ```
