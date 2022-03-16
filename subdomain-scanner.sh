@@ -1,4 +1,5 @@
 #!/bin/bash
+clear
 RED='\e[1;91m'
 BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
